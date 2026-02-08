@@ -434,7 +434,7 @@ export default function App() {
                             textShadow: '0 2px 10px rgba(0,0,0,0.3)'
                           }}
                         >
-                          Will you be my Valentine?
+                          Will you still choose me, knowing I’m learning to love you better?
                         </h1>
                         
                         <div className="flex flex-col gap-4">
