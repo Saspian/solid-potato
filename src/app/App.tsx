@@ -1,6 +1,6 @@
 import { useNavigate, Route, Routes, useLocation } from "react-router";
 import { motion } from "motion/react";
-import Proposal from "./page/proposal";
+import Proposal from "./page/Proposal";
 import Chocolate from "./page/Chocolate";
 import Response from "./page/Response";
 import { Heart, Candy } from "lucide-react";
