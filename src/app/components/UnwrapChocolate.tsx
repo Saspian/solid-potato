@@ -30,7 +30,7 @@ export function UnwrapChocolate() {
           >
             <motion.button
               onClick={() => setIsUnwrapped(true)}
-              className="relative bg-gradient-to-br from-amber-700 to-amber-900 text-white px-8 py-6 rounded-3xl shadow-2xl"
+              className="relative bg-gradient-to-br from-amber-700 to-amber-900 text-white px-8 py-6 rounded-3xl shadow-2xl cursor-pointer"
               whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
               whileTap={{ scale: 0.95 }}
               animate={{
@@ -43,6 +43,7 @@ export function UnwrapChocolate() {
                   ease: "easeInOut",
                 },
               }}
+              data-umami-event="chocolate_unwrap"
             >
               <div className="flex items-center gap-3">
                 <Gift className="w-8 h-8" />
