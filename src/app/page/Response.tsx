@@ -22,7 +22,6 @@ const steps: Step[] = [
 export default function Response() {
   const [currentStep, setCurrentStep] = useState(1);
   const [showProposal, setShowProposal] = useState(false);
-  const [answer, setAnswer] = useState<"yes" | "no" | null>(null);
   const navigate = useNavigate();
 
   const handleContinue = () => {
@@ -31,10 +30,6 @@ export default function Response() {
     } else {
       setShowProposal(true);
     }
-  };
-
-  const handleAnswer = (response: "yes" | "no") => {
-    setAnswer(response);
   };
 
   const currentStepData = steps[currentStep - 1];
@@ -131,26 +126,10 @@ export default function Response() {
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => alert('Comming Soon!')}
+                  onClick={() => navigate("/chocolate")}
                 >
                   <Candy size={18} />
                   To the Chocolate day{" "}
-                  <motion.span
-                    style={{
-                      width: 20,
-                      height: 20,
-                      border: "2px solid #ccc",
-                      borderTop: "2px solid #973c00",
-                      borderRadius: "50%",
-                      display: "inline-block",
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 0.8,
-                      ease: "linear",
-                    }}
-                  />
                 </motion.button>
               </motion.div>
             </AnimatePresence>
@@ -193,7 +172,7 @@ export default function Response() {
                 }}
               >
                 <p
-                  className="text-3xl leading-relaxed mb-16"
+                  className="text-xl leading-relaxed mb-16"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     color: "#FFFFFF",
@@ -207,7 +186,7 @@ export default function Response() {
                 </p>
 
                 <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer hidden sm:flex"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
@@ -219,7 +198,7 @@ export default function Response() {
                 >
                   <Candy size={18} />
                   To the Chocolate day
-                   <motion.span
+                  <motion.span
                     style={{
                       width: 20,
                       height: 20,
@@ -235,6 +214,20 @@ export default function Response() {
                       ease: "linear",
                     }}
                   />
+                </motion.button>
+                <motion.button
+                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer sm:hidden"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontWeight: 500,
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate("/chocolate")}
+                  data-umami-event="choclate_day"
+                >
+                  <Candy size={18} />
+                  Chocolate Day
                 </motion.button>
               </motion.div>
             </div>

@@ -1,556 +1,333 @@
-import { useState } from 'react';
-import { motion, AnimatePresence, translateAxis } from 'motion/react';
-import { Heart } from 'lucide-react';
-
-interface Step {
-  id: number;
-  title?: string;
-  subtitle?: string;
-  text?: string;
-  imageUrl: string;
-}
-
-const steps: Step[] = [
-  {
-    id: 1,
-    title: 'Shreeya',
-    subtitle: 'I want to tell you something…',
-    imageUrl: '1poster.JPG',
-  },
-  {
-    id: 2,
-    text: 'I never got the chance to ask you the way I should have.',
-    imageUrl: '2IMG_0320.JPG',
-  },
-  {
-    id: 3,
-    text: 'Life moved fast, and I missed a moment that mattered deeply to you.',
-    imageUrl: '3IMG_07922.JPG',
-  },
-  {
-    id: 4,
-    text: 'So today, on Propose Day, I want to ask you properly',
-    imageUrl: 'IMG_2950.JPG',
-  },
-  {
-    id: 5,
-    text: "not to erase the past, but to honor you.",
-    imageUrl: 'S+SHIghlights-110.jpg',
-  },
-  {
-    id: 6,
-    text: "Thank you for choosing me 💕 It means a lot to me. I promise to keep learning, growing, and loving you with more care every day. I’m really grateful for you.",
-    imageUrl: 'S+S HIghlights-48.jpg',
-  }
-];
-
-const proposalImageUrl = 'IMG_2493.jpg';
+import { motion } from "motion/react";
+import { Heart, Sparkles, Gift } from "lucide-react";
+import { FallingChocolates } from "../components/FallingChocolates";
+import { UnwrapChocolate } from "../components/UnwrapChocolate";
 
 export default function Chocolate() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [showProposal, setShowProposal] = useState(false);
-  const [answer, setAnswer] = useState<'yes' | 'no' | null>(null);
-
-  const handleContinue = () => {
-    if (currentStep < steps.length) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      setShowProposal(true);
-    }
-  };
-
-  const handleAnswer = (response: 'yes' | 'no') => {
-    setAnswer(response);
-  };
-
-  const currentStepData = steps[currentStep - 1];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background gradient */}
-      <div 
-        className="fixed inset-0 z-0"
-        style={{ background: 'linear-gradient(135deg, #ffd6e8, #fff1f7)' }}
-      />
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-orange-50 overflow-x-hidden">
+      <FallingChocolates />
 
-        {/* Floating Hearts Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="heart heart-filled heart-small heart-1"></div>
-        <div className="heart heart-outline heart-medium heart-2"></div>
-        <div className="heart heart-filled heart-medium heart-3"></div>
-        <div className="heart heart-outline heart-small heart-4"></div>
-        <div className="heart heart-filled heart-large heart-5"></div>
-        <div className="heart heart-outline heart-medium heart-6"></div>
-        <div className="heart heart-filled heart-small heart-7"></div>
-        <div className="heart heart-outline heart-large heart-8"></div>
-        <div className="heart heart-filled heart-medium heart-9"></div>
-        <div className="heart heart-outline heart-small heart-10"></div>
-        <div className="heart heart-filled heart-small heart-11"></div>
-        <div className="heart heart-outline heart-medium heart-12"></div>
-        <div className="heart heart-filled heart-large heart-13"></div>
-        <div className="heart heart-outline heart-small heart-14"></div>
-        <div className="heart heart-filled heart-medium heart-15"></div>
-      </div>
-
-      {/* Desktop Layout */}
-      <div className="hidden md:flex relative z-10 min-h-screen">
-        {/* Left Image Area - 40% */}
-        <motion.div 
-          className="w-[40%] relative overflow-hidden"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={showProposal ? 'proposal' : currentStep}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0"
-            >
-              <img
-                src={showProposal ? proposalImageUrl : currentStepData.imageUrl}
-                alt="Romantic moment"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Right Content Area - 60% */}
-        <motion.div 
-          className="w-[60%] flex items-center justify-center p-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-2xl w-full">
-            <AnimatePresence mode="wait">
-              {!showProposal ? (
-                <motion.div
-                  key={currentStep}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-center"
-                >
-                  {currentStepData.title ? (
-                    <>
-                      <h1 
-                        className="text-7xl md:text-8xl mb-6"
-                        style={{ 
-                          fontFamily: "'Playfair Display', serif",
-                          color: '#d4456e',
-                          fontWeight: 700
-                        }}
-                      >
-                        {currentStepData.title}
-                      </h1>
-                      <p 
-                        className="text-2xl mb-16"
-                        style={{ 
-                          fontFamily: "'Poppins', sans-serif",
-                          color: '#8b5a6a',
-                          fontWeight: 300
-                        }}
-                      >
-                        {currentStepData.subtitle}
-                      </p>
-                    </>
-                  ) : (
-                    <p 
-                      className="text-3xl leading-relaxed mb-16"
-                      style={{ 
-                        fontFamily: "'Poppins', sans-serif",
-                        color: '#6b4555',
-                        fontWeight: 400,
-                        lineHeight: '1.8'
-                      }}
-                    >
-                      {currentStepData.text}
-                    </p>
-                  )}
-
-                  <motion.button
-                    onClick={handleContinue}
-                    className="px-12 py-4 rounded-full text-white text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    style={{ 
-                      background: 'linear-gradient(135deg, #ff9dbe, #ffb4d2)',
-                      fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 500
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Continue
-                  </motion.button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-center"
-                >
-                  {!answer ? (
-                    <>
-                      <motion.div
-                        initial={{ y: -20 }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                      >
-                        <Heart 
-                          className="mx-auto mb-8" 
-                          size={80} 
-                          style={{ color: '#ff6b9d', fill: '#ff6b9d' }}
-                        />
-                      </motion.div>
-                      
-                      <h1 
-                        className="text-5xl md:text-6xl mb-12"
-                        style={{ 
-                          fontFamily: "'Playfair Display', serif",
-                          color: '#d4456e',
-                          fontWeight: 700,
-                          lineHeight: '1.3'
-                        }}
-                      >
-                        Will you still choose me, knowing I’m learning to love you better?
-                      </h1>
-                      
-                      <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <motion.button
-                          onClick={() => handleAnswer('yes')}
-                          className="px-16 py-5 rounded-full text-white text-xl shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[200px]"
-                          style={{ 
-                            background: 'linear-gradient(135deg, #ff4d7d, #ff6b9d)',
-                            fontFamily: "'Poppins', sans-serif",
-                            fontWeight: 600
-                          }}
-                          whileHover={{ scale: 1.08 }}
-                          whileTap={{ scale: 0.95 }}
-                          data-umami-event="valentine_yes"
-                        >
-                          Yes! 💕
-                        </motion.button>
-                        
-                        <motion.button
-                          onClick={() => handleAnswer('no')}
-                          className="px-16 py-5 rounded-full text-gray-600 text-xl shadow-md hover:shadow-lg transition-all duration-300 min-w-[200px]"
-                          style={{ 
-                            background: 'rgba(255, 255, 255, 0.8)',
-                            fontFamily: "'Poppins', sans-serif",
-                            fontWeight: 400
-                          }}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          data-umami-event="valentine_no"
-                        >
-                          No
-                        </motion.button>
-                      </div>
-                    </>
-                  ) : answer === 'yes' ? (
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <h1 
-                        className="text-6xl md:text-7xl mb-6"
-                        style={{ 
-                          fontFamily: "'Playfair Display', serif",
-                          color: '#d4456e',
-                          fontWeight: 700
-                        }}
-                      >
-                        You've made me the happiest person on earth! 💖
-                      </h1>
-                      <p 
-                        className="text-2xl"
-                        style={{ 
-                          fontFamily: "'Poppins', sans-serif",
-                          color: '#8b5a6a',
-                          fontWeight: 300
-                        }}
-                      >
-                        This Valentine's Day will be unforgettable.
-                      </p>
-                      <br/>
-                      <motion.button
-                          className="px-16 py-5 rounded-full text-white text-md shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[200px] cursor-pointer"
-                          style={{ 
-                            background: 'linear-gradient(135deg, #ff4d7d, #ff6b9d)',
-                            fontFamily: "'Poppins', sans-serif",
-                            fontWeight: 600
-                          }}
-                          whileHover={{ scale: 1.08 }}
-                          whileTap={{ scale: 0.95 }}
-                          data-umami-event="notify_me"
-                        >
-                          Click to notify Sanjay! 💕
-                        </motion.button>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <h1 
-                        className="text-5xl md:text-6xl mb-6"
-                        style={{ 
-                          fontFamily: "'Playfair Display', serif",
-                          color: '#8b5a6a',
-                          fontWeight: 600
-                        }}
-                      >
-                        That's okay... I'll always cherish the moments we've shared.
-                      </h1>
-                      <p 
-                        className="text-xl"
-                        style={{ 
-                          fontFamily: "'Poppins', sans-serif",
-                          color: '#8b5a6a',
-                          fontWeight: 300
-                        }}
-                      >
-                        I love you.
-                        I respect your space.
-                        And I believe in us.
-                      <br/>       
-                      <br/>            
-
-                        Always yours,
-                      <br/>            
-
-                        Sanjay
-                      </p>
-                    </motion.div>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-
-        
-      </div>
-
-      {/* Mobile Layout */}
-      <div className="md:hidden relative z-10 min-h-screen">
-        <AnimatePresence mode="wait">
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
           <motion.div
-            key={showProposal ? 'proposal' : currentStep}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative min-h-screen"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              bounce: 0.5,
+            }}
+            className="text-center"
           >
-            {/* Full screen background image */}
-            <div className="absolute inset-0">
-              <img
-                src={currentStepData.imageUrl}
-                alt="Romantic moment"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Glassmorphism overlay with content */}
-            <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+            {/* Decorative hearts */}
+            <div className="flex justify-center gap-4 mb-6">
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="w-full max-w-lg rounded-3xl p-8 shadow-2xl"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.25)',
-                  backdropFilter: 'blur(5px)',
-                  WebkitBackdropFilter: 'blur(5px)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, 10, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
               >
-                {!showProposal ? (
-                  <div className="text-center">
-                    {currentStepData.title ? (
-                      <>
-                        <h1 
-                          className="text-6xl mb-4"
-                          style={{ 
-                            fontFamily: "'Playfair Display', serif",
-                            color: '#ffffff',
-                            fontWeight: 700,
-                            textShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          {currentStepData.title}
-                        </h1>
-                        <p 
-                          className="text-xl mb-12"
-                          style={{ 
-                            fontFamily: "'Poppins', sans-serif",
-                            color: '#ffffff',
-                            fontWeight: 300,
-                            textShadow: '0 1px 5px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          {currentStepData.subtitle}
-                        </p>
-                      </>
-                    ) : (
-                      <p 
-                        className="text-2xl leading-relaxed mb-12"
-                        style={{ 
-                          fontFamily: "'Poppins', sans-serif",
-                          color: '#ffffff',
-                          fontWeight: 400,
-                          lineHeight: '1.7',
-                          textShadow: '0 1px 5px rgba(0,0,0,0.3)'
-                        }}
-                      >
-                        {currentStepData.text}
-                      </p>
-                    )}
+                <Heart className="w-8 h-8 md:w-12 md:h-12 text-pink-400 fill-pink-400" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.3,
+                }}
+              >
+                <Sparkles className="w-10 h-10 md:w-14 md:h-14 text-amber-600 fill-amber-600" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, 10, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.6,
+                }}
+              >
+                <Heart className="w-8 h-8 md:w-12 md:h-12 text-pink-400 fill-pink-400" />
+              </motion.div>
+            </div>
 
-                    <motion.button
-                      onClick={handleContinue}
-                      className="px-10 py-4 rounded-full text-white text-lg shadow-lg hover:shadow-xl transition-all duration-300 w-full"
-                      style={{ 
-                        background: 'linear-gradient(135deg, #ff4d7d, #ff6b9d)',
-                        fontFamily: "'Poppins', sans-serif",
-                        fontWeight: 500
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Continue
-                    </motion.button>
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    {!answer ? (
-                      <>
-                        <motion.div
-                          initial={{ y: -20 }}
-                          animate={{ y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.2 }}
-                        >
-                          <Heart 
-                            className="mx-auto mb-6" 
-                            size={60} 
-                            style={{ color: '#ffffff', fill: '#ffffff', filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.3))' }}
-                          />
-                        </motion.div>
-                        
-                        <h1 
-                          className="text-4xl mb-10"
-                          style={{ 
-                            fontFamily: "'Playfair Display', serif",
-                            color: '#ffffff',
-                            fontWeight: 700,
-                            lineHeight: '1.3',
-                            textShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          Will you still choose me, knowing I’m learning to love you better?
-                        </h1>
-                        
-                        <div className="flex flex-col gap-4">
-                          <motion.button
-                            onClick={() => handleAnswer('yes')}
-                            className="px-12 py-4 rounded-full text-white text-xl shadow-xl hover:shadow-2xl transition-all duration-300"
-                            style={{ 
-                              background: 'linear-gradient(135deg, #ff4d7d, #ff6b9d)',
-                              fontFamily: "'Poppins', sans-serif",
-                              fontWeight: 600
-                            }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            Yes! 💕
-                          </motion.button>
-                          
-                          <motion.button
-                            onClick={() => handleAnswer('no')}
-                            className="px-12 py-4 rounded-full text-white text-lg shadow-md hover:shadow-lg transition-all duration-300"
-                            style={{ 
-                              background: 'rgba(255, 255, 255, 0.3)',
-                              fontFamily: "'Poppins', sans-serif",
-                              fontWeight: 400
-                            }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            No
-                          </motion.button>
-                        </div>
-                      </>
-                    ) : answer === 'yes' ? (
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <h1 
-                          className="text-5xl mb-4"
-                          style={{ 
-                            fontFamily: "'Playfair Display', serif",
-                            color: '#ffffff',
-                            fontWeight: 700,
-                            textShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          You've made me the happiest! 💖
-                        </h1>
-                        <p 
-                          className="text-xl"
-                          style={{ 
-                            fontFamily: "'Poppins', sans-serif",
-                            color: '#ffffff',
-                            fontWeight: 300,
-                            textShadow: '0 1px 5px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          This Valentine's Day will be unforgettable.
-                        </p>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <h1 
-                          className="text-4xl mb-4"
-                          style={{ 
-                            fontFamily: "'Playfair Display', serif",
-                            color: '#ffffff',
-                            fontWeight: 600,
-                            textShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          That's okay...
-                        </h1>
-                        <p 
-                          className="text-lg"
-                          style={{ 
-                            fontFamily: "'Poppins', sans-serif",
-                            color: '#ffffff',
-                            fontWeight: 300,
-                            textShadow: '0 1px 5px rgba(0,0,0,0.3)'
-                          }}
-                        >
-                          I'll always cherish the moments we've shared.
-                        </p>
-                      </motion.div>
-                    )}
-                  </div>
-                )}
+            {/* Main heading */}
+            <motion.h1
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold text-amber-900 mb-4"
+              style={{ fontFamily: "'Pacifico', cursive" }}
+            >
+              Happy Chocolate Day
+            </motion.h1>
+
+            <motion.h2
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-3xl md:text-5xl font-semibold text-pink-600 mb-8"
+              style={{ fontFamily: "'Dancing Script', cursive" }}
+            >
+              My Love! 💖
+            </motion.h2>
+
+            {/* Chocolate image */}
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ delay: 0.7, duration: 0.8, type: "spring" }}
+              className="mb-8"
+            >
+              <img
+                src="/IMG_0132.jpg"
+                alt="Chocolate hearts"
+                className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl border-8 border-white mx-auto"
+              />
+            </motion.div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="text-amber-700 text-sm"
+            >
+              ↓ Scroll down for more sweetness ↓
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* Message Section */}
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-amber-200"
+            >
+              {/* Decorative header */}
+              <div className="flex justify-center gap-3 mb-6">
+                <div className="w-3 h-3 rounded-full bg-pink-400" />
+                <div className="w-3 h-3 rounded-full bg-amber-600" />
+                <div className="w-3 h-3 rounded-full bg-rose-400" />
+              </div>
+
+              <h3
+                className="text-3xl md:text-4xl text-center text-amber-900 mb-8"
+                style={{ fontFamily: "'Dancing Script', cursive" }}
+              >
+                A Sweet Message for You
+              </h3>
+
+              <div className="space-y-4 text-lg md:text-xl text-amber-900/90 leading-relaxed">
+                <p>My Dearest Love,</p>
+
+                <p>
+                  On this Chocolate Day, I wanted to remind you that you're
+                  sweeter than any chocolate in the world. Every moment with you
+                  feels like unwrapping a precious gift, discovering new reasons
+                  to fall in love with you all over again. 😊
+                </p>
+
+                <p>
+                  Just like chocolate brings joy and warmth, you bring light and
+                  happiness into my life. Nothing is sweeter to me than your smile. Your laughter is more delightful than any candy, and
+                  your love more satisfying than all the chocolates in the world
+                  combined. ☺️
+                </p>
+
+                <p>
+                  Thank you for being my sweetest blessing, my daily dose of
+                  happiness, and the most wonderful person I've ever known. You
+                  make every day feel like a celebration! 💖
+                </p>
+
+                <p className="text-center mt-8 text-2xl text-pink-600">
+                  You know I don't love sweet things, but you are an exception 💕
+                </p>
+
+                <p className="text-right italic">With all my love, forever yours</p>
+              </div>
+
+              {/* Decorative footer */}
+              <div className="flex justify-center gap-3 mt-8">
+                <Heart className="w-5 h-5 text-pink-400 fill-pink-400" />
+                <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+                <Heart className="w-5 h-5 text-pink-400 fill-pink-400" />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Image/GIF Section */}
+        <section className="py-16 px-4 bg-gradient-to-r from-pink-100/50 to-amber-100/50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h3
+              className="text-3xl md:text-4xl text-amber-900 mb-8"
+              style={{ fontFamily: "'Dancing Script', cursive" }}
+            >
+              Sweet Treats for My Sweetheart
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative"
+              >
+                <img
+                  src="chocolate.png"
+                  alt="Sweet chocolates"
+                  className="w-full h-80 object-cover rounded-3xl shadow-xl border-4 border-white"
+                />
+                <motion.div
+                  className="absolute -top-4 -right-4"
+                  animate={{
+                    rotate: [0, 360],
+                    scale: [1, 1.2, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                  }}
+                >
+                  <Sparkles className="w-10 h-10 text-yellow-400 fill-yellow-400" />
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="flex items-center justify-center bg-gradient-to-br from-pink-200 to-rose-200 rounded-3xl shadow-xl border-4 border-white p-8"
+              >
+                <div className="text-center">
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, -5, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <Gift className="w-24 h-24 text-amber-800 mx-auto mb-4" />
+                  </motion.div>
+                  <p className="text-2xl text-amber-900 font-semibold">
+                    You're my most favorite treat! 🍫
+                  </p>
+                </div>
               </motion.div>
             </div>
           </motion.div>
-        </AnimatePresence>
+        </section>
+
+        {/* Interactive Feature Section */}
+        <section className="py-16 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <motion.h3
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl text-amber-900 mb-8"
+              style={{ fontFamily: "'Dancing Script', cursive" }}
+            >
+              A Special Surprise Just for You
+            </motion.h3>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              data-umami-event="chocolate_unwrap"
+            >
+              <UnwrapChocolate />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-12 px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <div className="flex justify-center gap-2">
+              <motion.div
+                animate={{
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: 0,
+                }}
+              >
+                <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: 0.3,
+                }}
+              >
+                <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: 0.6,
+                }}
+              >
+                <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+              </motion.div>
+            </div>
+
+            <p className="text-xl text-amber-900">
+              Happy Chocolate Day, My Sweetheart! 🍫
+            </p>
+            <p className="text-amber-700">Made with love, just for you 💖</p>
+          </motion.div>
+        </footer>
       </div>
     </div>
   );
