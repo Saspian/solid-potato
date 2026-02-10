@@ -119,17 +119,16 @@ export default function Response() {
                   care every day. I’m really grateful for you.
                 </p>
                 <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  className="px-12 py-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/chocolate")}
+                  onClick={() => navigate("/teddy")}
                 >
-                  <Candy size={18} />
-                  To the Chocolate day{" "}
+                  🧸 Teddy day{" "}
                 </motion.button>
               </motion.div>
             </AnimatePresence>
@@ -184,50 +183,17 @@ export default function Response() {
                   promise to keep learning, growing, and loving you with more
                   care every day. I’m really grateful for you.
                 </p>
-
                 <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer hidden sm:flex"
+                  className="px-12 py-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/chocolate")}
-                  data-umami-event="choclate_day"
+                  onClick={() => navigate("/teddy")}
                 >
-                  <Candy size={18} />
-                  To the Chocolate day
-                  <motion.span
-                    style={{
-                      width: 20,
-                      height: 20,
-                      border: "2px solid #ccc",
-                      borderTop: "2px solid #973c00",
-                      borderRadius: "50%",
-                      display: "inline-block",
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 0.8,
-                      ease: "linear",
-                    }}
-                  />
-                </motion.button>
-                <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-amber-700 text-amber-800 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer sm:hidden"
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 500,
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/chocolate")}
-                  data-umami-event="choclate_day"
-                >
-                  <Candy size={18} />
-                  Chocolate Day
+                  🧸 Teddy Day
                 </motion.button>
               </motion.div>
             </div>

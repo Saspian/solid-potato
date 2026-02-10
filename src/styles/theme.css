@@ -332,3 +332,25 @@
 .heart-13 { left: 50%; animation: float-up 17s infinite; animation-delay: 3.5s; }
 .heart-14 { left: 70%; animation: float-up-slow 22s infinite; animation-delay: 6.5s; }
 .heart-15 { left: 90%; animation: float-up 16s infinite; animation-delay: 5.5s; }
+
+@theme {
+  --font-family-heading: 'Playfair Display', serif;
+  --font-family-body: 'Poppins', sans-serif;
+  
+  --color-peach: #FFD4C0;
+  --color-cream: #FFF8F0;
+  --color-blush: #FFB6C6;
+  --color-warm-brown: #C4997B;
+  --color-soft-pink: #FFCAD4;
+}
+
+.body {
+  font-family: var(--font-family-body);
+  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-peach) 50%, var(--color-blush) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+  }
+}

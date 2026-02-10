@@ -20,17 +20,17 @@ const steps: Step[] = [
   {
     id: 2,
     text: "I never got the chance to ask you the way I should have.",
-    imageUrl: "2IMG_0320.JPG",
+    imageUrl: "2IMG_0320.jpg",
   },
   {
     id: 3,
     text: "Life moved fast, and I missed a moment that mattered deeply to you.",
-    imageUrl: "3IMG_07922.JPG",
+    imageUrl: "3IMG_07922.jpg",
   },
   {
     id: 4,
     text: "So today, on Propose Day, I want to ask you properly",
-    imageUrl: "IMG_2950.JPG",
+    imageUrl: "IMG_2950.jpg",
   },
   {
     id: 5,
@@ -178,7 +178,7 @@ export default function Proposal() {
 
                   <motion.button
                     onClick={handleContinue}
-                    className="px-12 py-4 rounded-full text-white text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="px-12 py-4 rounded-full text-white text-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                     style={{
                       background: "linear-gradient(135deg, #ff9dbe, #ffb4d2)",
                       fontFamily: "'Poppins', sans-serif",
@@ -227,7 +227,7 @@ export default function Proposal() {
                       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <motion.button
                           onClick={() => handleAnswer("yes")}
-                          className="px-16 py-5 rounded-full text-white text-xl shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[200px]"
+                          className="px-16 py-5 rounded-full text-white text-xl shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[200px] cursor-pointer"
                           style={{
                             background:
                               "linear-gradient(135deg, #ff4d7d, #ff6b9d)",
@@ -243,7 +243,7 @@ export default function Proposal() {
 
                         <motion.button
                           onClick={() => handleAnswer("no")}
-                          className="px-16 py-5 rounded-full text-gray-600 text-xl shadow-md hover:shadow-lg transition-all duration-300 min-w-[200px]"
+                          className="px-16 py-5 rounded-full text-gray-600 text-xl shadow-md hover:shadow-lg transition-all duration-300 min-w-[200px] cursor-pointer"
                           style={{
                             background: "rgba(255, 255, 255, 0.8)",
                             fontFamily: "'Poppins', sans-serif",
