@@ -23,13 +23,13 @@ export default function App() {
       {/* Mobile Menu Toggle Button */}
       <motion.button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="lg:hidden fixed top-6 right-6 z-50 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border-2 border-pink-400 text-pink-600 cursor-pointer"
+        className="xl:hidden fixed top-6 right-6 z-50 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border-2 border-pink-400 text-pink-600 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </motion.button>
-      <nav className="hidden lg:flex absolute top-6 right-6 z-50 gap-3">
+      <nav className="hidden xl:flex absolute top-6 right-6 z-50 gap-3">
         <motion.button
           className="px-6 py-3 rounded-full border-2 border-pink-400 text-pink-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
@@ -138,7 +138,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden fixed top-20 left-6 right-6 z-40 rounded-2xl bg-white/90 backdrop-blur-md shadow-2xl border border-pink-200 p-4"
+            className="xl:hidden w-[250px] fixed top-20 right-6 z-40 rounded-2xl bg-white/90 backdrop-blur-md shadow-2xl border border-pink-200 p-4"
           >
             <div className="flex flex-col gap-2">
               <motion.button
@@ -148,7 +148,7 @@ export default function App() {
                   fontWeight: 500,
                 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleRoute("/proposal")}
+                onClick={() => handleRoute(location.pathname === "/proposal" ? "/" : "/proposal")}
               >
                 <Heart size={18} />
                 {location.pathname === "/proposal"
