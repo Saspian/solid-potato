@@ -174,6 +174,7 @@ export function HugInteractive({
             src="IMG_0181.JPG"
             alt="Hug Day Memory"
             className="w-full h-full object-cover"
+            data-umami-event="image_hold"
           />
         </motion.div>
 

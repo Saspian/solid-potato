@@ -30,6 +30,7 @@ export function FinalMoment({ isMobile = false }: FinalMomentProps) {
             className={`${
               isMobile ? 'w-full' : 'flex-1'
             } px-10 py-5 bg-pink-300 hover:bg-pink-400 text-gray-800 rounded-full text-lg font-medium transition-all duration-300 shadow-medium animate-heartbeat`}
+            data-umami-event="yes_always_hug"
           >
             Yes, always 💕
           </motion.button>
@@ -41,6 +42,7 @@ export function FinalMoment({ isMobile = false }: FinalMomentProps) {
             className={`${
               isMobile ? 'w-full' : 'flex-1'
             } px-10 py-5 bg-purple-200 hover:bg-purple-300 text-gray-800 rounded-full text-lg font-medium transition-all duration-300 shadow-medium`}
+            data-umami-event="come_closer_hug"
           >
             Come closer 🤗
           </motion.button>
