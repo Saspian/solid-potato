@@ -3,9 +3,10 @@ import { AnimatePresence, motion } from "motion/react";
 import Proposal from "./page/Proposal";
 import Chocolate from "./page/Chocolate";
 import Response from "./page/Response";
-import { Heart, Candy, X, Menu } from "lucide-react";
+import { Heart, Candy, X, Menu, HeartHandshake } from "lucide-react";
 import { useState } from "react";
 import Teddy from "./page/Teddy";
+import PromisePage from "./page/Promise";
 
 export default function App() {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export default function App() {
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => handleRoute(location.pathname === "/proposal" ? "/" : "/proposal")}
+          onClick={() => handleRoute(location.pathname === "/proposal" ? "/response" : "/proposal")}
         >
           <Heart size={18} />
           {location.pathname === "/proposal" ? "My Response" : "Propose Day"}
@@ -72,7 +73,7 @@ export default function App() {
           🧸 &nbsp;Teddy Day
         </motion.button>
 
-        {/* <motion.button
+         <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-purple-400 text-purple-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -87,7 +88,7 @@ export default function App() {
           Promise
         </motion.button>
 
-        <motion.button
+        {/* <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-blue-400 text-blue-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -148,7 +149,7 @@ export default function App() {
                   fontWeight: 500,
                 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleRoute(location.pathname === "/proposal" ? "/" : "/proposal")}
+                onClick={() => handleRoute(location.pathname === "/proposal" ? "/response" : "/proposal")}
               >
                 <Heart size={18} />
                 {location.pathname === "/proposal"
@@ -181,7 +182,7 @@ export default function App() {
                 🧸 Teddy Day
               </motion.button>
 
-              {/* <motion.button
+              <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-purple-400 text-purple-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -193,7 +194,7 @@ export default function App() {
                 <HeartHandshake size={18} />Promise
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-blue-400 text-blue-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -233,10 +234,12 @@ export default function App() {
         )}
       </AnimatePresence>
       <Routes>
-        <Route path="/" element={<Response />} />
+        <Route path="/" element={<PromisePage />} />
+        <Route path="/response" element={<Response />} />
         <Route path="/proposal" element={<Proposal />} />
         <Route path="/chocolate" element={<Chocolate />} />
         <Route path="/teddy" element={<Teddy />} />
+        <Route path="/promise" element={<PromisePage />} />
       </Routes>
     </>
   );

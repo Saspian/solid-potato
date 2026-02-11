@@ -354,3 +354,43 @@
     font-family: var(--font-family-heading);
   }
 }
+
+@theme {
+  --font-family-promise-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-promse-serif: 'Crimson Text', ui-serif, Georgia, serif;
+}
+
+.promise-body {
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle gradient radial utility */
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color to match theme */
+::selection {
+  background-color: #e8d5c8;
+  color: #3d3936;
+}
+
+::-moz-selection {
+  background-color: #e8d5c8;
+  color: #3d3936;
+}
