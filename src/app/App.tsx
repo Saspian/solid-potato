@@ -7,6 +7,7 @@ import { Heart, Candy, X, Menu, HeartHandshake } from "lucide-react";
 import { useState } from "react";
 import Teddy from "./page/Teddy";
 import PromisePage from "./page/Promise";
+import Hug from "./page/Hug";
 
 export default function App() {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ export default function App() {
           Promise
         </motion.button>
 
-        {/* <motion.button
+        <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-blue-400 text-blue-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -102,7 +103,7 @@ export default function App() {
           🤗 &nbsp;Hug
         </motion.button>
 
-        <motion.button
+        {/* <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-red-400 text-red-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -194,7 +195,7 @@ export default function App() {
                 <HeartHandshake size={18} />Promise
               </motion.button>
 
-              {/* <motion.button
+              <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-blue-400 text-blue-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -206,7 +207,7 @@ export default function App() {
                 🤗 Hug
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-red-400 text-red-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -234,12 +235,13 @@ export default function App() {
         )}
       </AnimatePresence>
       <Routes>
-        <Route path="/" element={<PromisePage />} />
+        <Route path="/" element={<Hug />} />
         <Route path="/response" element={<Response />} />
         <Route path="/proposal" element={<Proposal />} />
         <Route path="/chocolate" element={<Chocolate />} />
         <Route path="/teddy" element={<Teddy />} />
         <Route path="/promise" element={<PromisePage />} />
+        <Route path="/hug" element={<Hug />} />
       </Routes>
     </>
   );

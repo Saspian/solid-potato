@@ -394,3 +394,45 @@ html {
   background-color: #e8d5c8;
   color: #3d3936;
 }
+
+@theme {
+  --font-family-hug-handwritten: 'Pacifico', cursive;
+  --font-family-hug-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
+  --font-family-hug-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.body-hug {
+  font-family: var(--font-family-hug-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+
+  .font-handwritten {
+    font-family: var(--font-family-hug-handwritten);
+  }
+
+  .font-display {
+    font-family: var(--font-family-hug-display);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(255, 107, 157, 0.3);
+    color: #991b1b;
+  }
+
+  /* Smooth cursor */
+  button {
+    cursor: pointer;
+  }
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
