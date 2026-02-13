@@ -126,9 +126,9 @@ export default function Response() {
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/teddy")}
+                  onClick={() => navigate("/kiss")}
                 >
-                  🧸 Teddy day{" "}
+                  💋 Kiss Day
                 </motion.button>
               </motion.div>
             </AnimatePresence>
@@ -191,9 +191,9 @@ export default function Response() {
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/teddy")}
+                  onClick={() => navigate("/kiss")}
                 >
-                  🧸 Teddy Day
+                  💋 Kiss Day
                 </motion.button>
               </motion.div>
             </div>

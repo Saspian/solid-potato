@@ -8,6 +8,7 @@ import { useState } from "react";
 import Teddy from "./page/Teddy";
 import PromisePage from "./page/Promise";
 import Hug from "./page/Hug";
+import Kiss from "./page/Kiss";
 
 export default function App() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export default function App() {
           onClick={() => handleRoute(location.pathname === "/proposal" ? "/response" : "/proposal")}
         >
           <Heart size={18} />
-          {location.pathname === "/proposal" ? "My Response" : "Propose Day"}
+          {location.pathname === "/proposal" ? "My Response" : "Propose"}
         </motion.button>
 
         <motion.button
@@ -57,7 +58,7 @@ export default function App() {
           onClick={() => handleRoute("/chocolate")}
         >
           <Candy size={18} />
-          Chocolate Day
+          Chocolate
         </motion.button>
 
         <motion.button
@@ -71,7 +72,7 @@ export default function App() {
           whileTap={{ scale: 0.95 }}
           onClick={() => handleRoute("/teddy")}
         >
-          🧸 &nbsp;Teddy Day
+          🧸 &nbsp;Teddy
         </motion.button>
 
          <motion.button
@@ -103,7 +104,7 @@ export default function App() {
           🤗 &nbsp;Hug
         </motion.button>
 
-        {/* <motion.button
+        <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-red-400 text-red-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -117,7 +118,7 @@ export default function App() {
           💋 &nbsp;Kiss
         </motion.button>
 
-        <motion.button
+        {/* <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -155,7 +156,7 @@ export default function App() {
                 <Heart size={18} />
                 {location.pathname === "/proposal"
                   ? "My Response"
-                  : "Propose Day"}
+                  : "Propose"}
               </motion.button>
 
               <motion.button
@@ -168,7 +169,7 @@ export default function App() {
                 onClick={() => handleRoute("/chocolate")}
               >
                 <Candy size={18} />
-                Chocolate Day
+                Chocolate
               </motion.button>
 
               <motion.button
@@ -180,7 +181,7 @@ export default function App() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleRoute("/teddy")}
               >
-                🧸 Teddy Day
+                🧸 Teddy
               </motion.button>
 
               <motion.button
@@ -207,7 +208,7 @@ export default function App() {
                 🤗 Hug
               </motion.button>
 
-              {/* <motion.button
+              <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-red-400 text-red-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -219,7 +220,7 @@ export default function App() {
                 💋 Kiss
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -235,13 +236,14 @@ export default function App() {
         )}
       </AnimatePresence>
       <Routes>
-        <Route path="/" element={<Hug />} />
+        <Route path="/" element={<Response />} />
         <Route path="/response" element={<Response />} />
         <Route path="/proposal" element={<Proposal />} />
         <Route path="/chocolate" element={<Chocolate />} />
         <Route path="/teddy" element={<Teddy />} />
         <Route path="/promise" element={<PromisePage />} />
         <Route path="/hug" element={<Hug />} />
+        <Route path="/kiss" element={<Kiss />} />
       </Routes>
     </>
   );
