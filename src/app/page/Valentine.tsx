@@ -207,25 +207,13 @@ export default function Valentine() {
                 {getMessage()}
               </p>
 
-              <motion.button
-                onClick={() => {
-                  setResponse(null);
-                  setHearts([]);
-                }}
-                className="px-8 py-3 rounded-full bg-white/80 text-rose-700 text-lg font-medium border border-rose-300 shadow-md cursor-pointer"
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(255, 255, 255, 0.95)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Ask me again ✨
-              </motion.button>
-              {response !== "no" && (
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
                 <motion.button
-                  onClick={() => navigate("/kiss")}
-                  className="px-8 py-3 ml-4 rounded-full bg-white/80 text-rose-700 text-lg font-medium border border-rose-300 shadow-md cursor-pointer"
+                  onClick={() => {
+                    setResponse(null);
+                    setHearts([]);
+                  }}
+                  className="px-8 py-3 rounded-full bg-white/80 text-rose-700 text-lg font-medium border border-rose-300 shadow-md cursor-pointer"
                   whileHover={{
                     scale: 1.05,
                     backgroundColor: "rgba(255, 255, 255, 0.95)",
@@ -233,9 +221,23 @@ export default function Valentine() {
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  Send a kiss 💋
+                  Ask me again ✨
                 </motion.button>
-              )}
+                {response !== "no" && (
+                  <motion.button
+                    onClick={() => navigate("/kiss")}
+                    className="px-8 py-3 rounded-full bg-white/80 text-rose-700 text-lg font-medium border border-rose-300 shadow-md cursor-pointer"
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "rgba(255, 255, 255, 0.95)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    Send a kiss 💋
+                  </motion.button>
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
