@@ -119,7 +119,7 @@ export default function Response() {
                   care every day. I’m really grateful for you.
                 </p>
                 <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  className="px-12 py-4 mb-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
@@ -129,6 +129,18 @@ export default function Response() {
                   onClick={() => navigate("/kiss")}
                 >
                   💋 Kiss Day
+                </motion.button>
+                <motion.button
+                  className="px-12 py-4 rounded-full border-2  border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontWeight: 500,
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate("/valentine")}
+                >
+                  💝 Valentine's Day
                 </motion.button>
               </motion.div>
             </AnimatePresence>
@@ -184,7 +196,7 @@ export default function Response() {
                   care every day. I’m really grateful for you.
                 </p>
                 <motion.button
-                  className="px-12 py-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  className="px-12 py-4 mb-4 rounded-full border-2 border-rose-400 text-rose-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
@@ -194,6 +206,18 @@ export default function Response() {
                   onClick={() => navigate("/kiss")}
                 >
                   💋 Kiss Day
+                </motion.button>
+                <motion.button
+                  className="px-6 py-4 rounded-full border-2  border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontWeight: 500,
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate("/valentine")}
+                >
+                  💝 Valentine's Day
                 </motion.button>
               </motion.div>
             </div>

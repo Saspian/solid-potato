@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useHourlyCounter } from "../customHooks/useHourlyCounter";
 
 interface Kiss {
   id: number;
@@ -12,13 +13,15 @@ export default function App() {
   const [kisses, setKisses] = useState<Kiss[]>([]);
   const [kissId, setKissId] = useState(0);
   const [totalKiss, setTotalKiss] = useState(0);
+  const { count, resetCounter } = useHourlyCounter();
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const localTotalKisses = localStorage.getItem("totalKiss");
     if (localTotalKisses) {
-      setTotalKiss(+localTotalKisses)
+      setTotalKiss(+localTotalKisses);
     }
-  }, [])
+  }, []);
 
   // Play kiss sound from mp3 file
   const playKissSound = () => {
@@ -30,6 +33,7 @@ export default function App() {
   };
 
   const sendKiss = () => {
+    setIsClicked(true);
     // Play kiss sound
     playKissSound();
 
@@ -40,14 +44,15 @@ export default function App() {
       drift: Math.random() * 100 - 50, // Random horizontal drift during animation (-50 to 50px)
       rotation: Math.random() * 60, // Random rotation angle
     };
-    setTotalKiss(prevKiss => prevKiss + 1)
-    localStorage.setItem("totalKiss", totalKiss.toString())
+    setTotalKiss((prevKiss) => prevKiss + 1);
+    localStorage.setItem("totalKiss", totalKiss.toString());
     setKisses([...kisses, newKiss]);
     setKissId(kissId + 1);
 
     // Remove kiss after animation completes
     setTimeout(() => {
       setKisses((prev) => prev.filter((k) => k.id !== newKiss.id));
+      setIsClicked(false);
     }, 1500);
   };
 
@@ -134,18 +139,36 @@ export default function App() {
             >
               Send a Kiss
             </motion.button>
+            {isClicked && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="absolute -bottom-6 left-1/2 transform -translate-x-1/2"
+              >
+                <div className="text-center space-y-2">
+                  <p className="text-sm text-gray-600 whitespace-nowrap">
+                    Tap button multiple time to send more kisses
+                  </p>
+                </div>
+              </motion.div>
+            )}
             <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute -bottom-12 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="text-center space-y-2">
-              <p className="text-sm text-[#f21b42] whitespace-nowrap font-extrabold">
-                You kissed Sanjay {localStorage.getItem("totalKiss") ?? 0 } time
-              </p>
-            </div>
-          </motion.div>
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute -bottom-20 left-1/2 transform -translate-x-1/2"
+            >
+              <div className="text-center space-y-2">
+                <p className="text-sm text-[#f21b42] whitespace-nowrap font-extrabold">
+                  You kissed Sanjay {localStorage.getItem("totalKiss") ?? 0}{" "}
+                  time
+                </p>
+                <p className="text-sm text-[#f21b42] whitespace-nowrap font-extrabold">
+                  Sanjay kissed you {count ?? 0} time
+                </p>
+              </div>
+            </motion.div>
             <span></span>
           </div>
         </div>

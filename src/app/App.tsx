@@ -9,6 +9,7 @@ import Teddy from "./page/Teddy";
 import PromisePage from "./page/Promise";
 import Hug from "./page/Hug";
 import Kiss from "./page/Kiss";
+import Valentine from "./page/Valentine";
 
 export default function App() {
   const navigate = useNavigate();
@@ -118,7 +119,7 @@ export default function App() {
           💋 &nbsp;Kiss
         </motion.button>
 
-        {/* <motion.button
+        <motion.button
           className="px-5 py-2.5 rounded-full border-2 border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
           style={{
             fontFamily: "'Poppins', sans-serif",
@@ -130,7 +131,7 @@ export default function App() {
           onClick={() => handleRoute("/valentine")}
         >
           💝 &nbsp;Valentine
-        </motion.button> */}
+        </motion.button>
       </nav>
 
       {/* Mobile Collapsible Menu */}
@@ -220,7 +221,7 @@ export default function App() {
                 💋 Kiss
               </motion.button>
 
-              {/* <motion.button
+              <motion.button
                 className="w-full px-5 py-3 rounded-full border-2 border-fuchsia-400 text-fuchsia-600 bg-white/80 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -230,7 +231,7 @@ export default function App() {
                 onClick={() => handleRoute("/valentine")}
               >
                 💝 Valentine
-              </motion.button> */}
+              </motion.button>
             </div>
           </motion.div>
         )}
@@ -244,6 +245,7 @@ export default function App() {
         <Route path="/promise" element={<PromisePage />} />
         <Route path="/hug" element={<Hug />} />
         <Route path="/kiss" element={<Kiss />} />
+        <Route path="/valentine" element={<Valentine />} />
       </Routes>
     </>
   );
